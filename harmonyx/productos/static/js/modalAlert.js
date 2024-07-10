@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    // ELEMENTOS PARA EL INICIO DE SESIÓN
+    const btnForgetPassword = document.getElementById('btnForgetPassword');
+
     // ELEMENTOS DEL FORMULARIO SUSCRIBIRSE A OFERTAS Y DESCUENTOS
     const formEmailSuscribe = document.getElementById('formEmailSuscribe');
     const emailInputFormEmailSuscribe = document.getElementById('emailInputFormEmailSuscribe');
@@ -15,44 +19,58 @@ document.addEventListener('DOMContentLoaded', function () {
     const alertTitle = document.getElementById('alert-title');
     const alertMessage = document.getElementById('alert-message');
 
+    // EVENTO CUANDO SE PRESIONE EL BOTON DE OLVIDASTE TU CONTRASEÑA?
+    if (btnForgetPassword) {
+        btnForgetPassword.addEventListener('click', (event) => {
+            event.preventDefault();
+            alertTitle.textContent = "¡No la olvides!";
+            alertMessage.textContent = "Recuerda la contraseña para iniciar sesión 🗿";
+            openAlertModalPanel();
+        });
+    }
+
     // EVENTO CUANDO SE ENVÍE EL FORMULARIO DE CONTACTO
-    formContacto.addEventListener('submit', (event) => {
-        event.preventDefault();
+    if (formContacto) {
+        formContacto.addEventListener('submit', (event) => {
+            event.preventDefault();
 
-        const name = inputName.value;
-        const email = inputEmail.value;
-        const message = inputMessage.value;
+            const name = inputName.value;
+            const email = inputEmail.value;
+            const message = inputMessage.value;
 
-        if (name && email && message) {
-            alertTitle.textContent = "¡Mensaje Enviado!";
-            alertMessage.textContent = "Tu mensaje ha sido enviado exitosamente, nos pondremos en contacto pronto 😁";
-        } else {
-            alertTitle.textContent = "¡Error!";
-            alertMessage.textContent = "Tu mensaje no ha sido enviado, verifica que hayas ingresado los datos correctamente 😢";
-        }
-        openAlertModalPanel();
-        inputName.value = '';
-        inputEmail.value = '';
-        inputMessage.value = '';
-    });
+            if (name && email && message) {
+                alertTitle.textContent = "¡Mensaje Enviado!";
+                alertMessage.textContent = "Tu mensaje ha sido enviado exitosamente, nos pondremos en contacto pronto 😁";
+            } else {
+                alertTitle.textContent = "¡Error!";
+                alertMessage.textContent = "Tu mensaje no ha sido enviado, verifica que hayas ingresado los datos correctamente 😢";
+            }
+            openAlertModalPanel();
+            inputName.value = '';
+            inputEmail.value = '';
+            inputMessage.value = '';
+        });
+    }
 
     // EVENTO CUANDO SE ENVÍE EL FORMULARIO DE SUSCRIPCION
-    formEmailSuscribe.addEventListener('submit', (event) => {
-        event.preventDefault();
+    if (formEmailSuscribe) {
+        formEmailSuscribe.addEventListener('submit', (event) => {
+            event.preventDefault();
 
-        const email = emailInputFormEmailSuscribe.value;
+            const email = emailInputFormEmailSuscribe.value;
 
-        if (email) {
-            alertTitle.textContent = "¡Suscripción Exitosa!";
-            alertMessage.textContent = "Tu correo ha sido ingresado y registrado a nuestras ofertas y descuentos 😎";
-        } else {
-            alertTitle.textContent = "Email Inválido";
-            alertMessage.textContent = "Debes ingresar un correo válido para suscribirte a nuestras ofertas y descuentos 😠";
-        }
+            if (email) {
+                alertTitle.textContent = "¡Suscripción Exitosa!";
+                alertMessage.textContent = "Tu correo ha sido ingresado y registrado a nuestras ofertas y descuentos 😎";
+            } else {
+                alertTitle.textContent = "Email Inválido";
+                alertMessage.textContent = "Debes ingresar un correo válido para suscribirte a nuestras ofertas y descuentos 😠";
+            }
 
-        openAlertModalPanel();
-        emailInputFormEmailSuscribe.value = '';
-    });
+            openAlertModalPanel();
+            emailInputFormEmailSuscribe.value = '';
+        });
+    }
 
     // Función para abrir el modal
     function openAlertModalPanel() {

@@ -47,6 +47,11 @@ def checkout(request):
     return render(request, 'productos/checkout.html', context)
 
 
+def top100billboard(request):
+    context = {'currentPage': 'top100billboard'}
+    return render(request, 'productos/top100billboard.html', context)
+
+
 #################################### FUNCIONES PARA EL CRUD DE PRODUCTOS #############################################
 @login_required
 def crudProductos(request):

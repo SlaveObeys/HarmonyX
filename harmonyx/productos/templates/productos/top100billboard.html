@@ -1,0 +1,37 @@
+{% extends 'productos/base.html' %}
+{% load static %}
+
+{% block title %}
+  Top 100 Billboard - HarmonyX
+{% endblock %}
+
+{% block content %}
+  <!-- SECTION NUESTROS PRODUCTOS --> <!-- lg:h-80 mt-4 -->
+  <section>
+    <div class="bg-black">
+
+      <h2 class="font-bold text-3xl tracking-tight mb-4 mt-8 text-center text-white">💯 Lista de los Top 100 Billboard 💯</h2>
+
+      <div class="mt-8 overflow-x-auto mb-8">
+        <table class="table-auto text-center w-full">
+          <thead>
+            <tr class="text-sm text-light-black font-medium uppercase bg-light-light-black">
+              <th class="px-4 py-4">Ranking</th>
+              <th class="px-8 py-4 whitespace-nowrap">Artista</th>
+              <th class="px-4 py-4">Canción</th>
+            </tr>
+          </thead>
+          <tbody id="table-body-top-100"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/preloadpage.js' %}"></script>
+  <script src="{% static 'js/navBar.js' %}"></script>
+  <script src="{% static 'js/previewProduct.js' %}"></script>
+  <script src="{% static 'js/modalAlert.js' %}"></script>
+  <script src="{% static 'js/top100billboard.js' %}"></script>
+{% endblock %}

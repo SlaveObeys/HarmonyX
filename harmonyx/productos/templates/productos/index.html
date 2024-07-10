@@ -8,7 +8,7 @@
 {% block content %}
   <!-- SECTION CARRUSEL DE IMAGENES -->
   <section class="bg-black">
-    <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:max-w-7xl lg:px-8">
       <h2 class="text-2xl font-bold tracking-tight text-white text-center">🎵 Álbumes Originales 🎵</h2>
       <div class="carrusel mt-6">
         <img src="{% static 'img/imgcarruseltyler.png' %}" alt="carrusel1" class="slide rounded-md" />
@@ -51,8 +51,20 @@
   </section>
 
   <section>
+    <!-- SECTION TOP 100 BILLBOARD -->
+    <div class="bg-black py-8">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight text-white text-center">💯 Top 100 Billboard 💯</h2>
+        <div class="flex justify-center mt-8 md:px-15">
+          <a href="{% url 'top100billboard' %}" class="text-lg text-center text-black font-bold bg-green hover:text-anim-scale flex w-full justify-center rounded-full px-3 py-2 leading-6 shadow-sm">Ver todos los artistas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <!-- SECTION NUESTROS CLIENTES RECONOCIDOS -->
-    <div class="bg-black bg-pattern-empresas py-24 sm:py-32">
+    <div class="bg-black py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 class="text-center text-lg font-semibold leading-8 text-white">Empresas que confían en nosotros</h2>
         <div class="mx-auto mt-10 grid max-w-lg grid-cols-1 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-2 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">

@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="height: 100%; margin: 0;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,9 +15,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
   </head>
-  <body>
+  <body class="bg-black flex flex-col min-h-screen" style="height: 100%; margin: 0;">
     <header>
-      <nav class="bg-light-black">
+      <nav class="bg-light-black z-49 fixed top-0 w-full">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-2 sm:py-2 lg:py-2">
           <div class="relative flex h-18 items-center justify-between">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden-920">
@@ -222,23 +222,7 @@
                     <a href="#" class="block px-4 py-2 text-sm font-semibold text-white hover:bg-white hover:text-black" role="menuitem" tabindex="-1" id="user-menu-item-1">{{ user.username }}</a>
                     <a href="{% url 'logoutAccount' %}" class="block px-4 py-2 text-sm font-semibold text-white hover:bg-white hover:text-black" role="menuitem" tabindex="-1" id="user-menu-item-2">Cerrar Sesión</a>
                   {% else %}
-                    <a href="{% if currentPage == 'iniciarSesion' %}
-                        
-                        
-                        
-                         #
-
-
-
-                      {% else %}
-                        
-                        
-                        
-                        accounts/login
-
-
-
-                      {% endif %}"
+                    <a href="accounts/login"
                       class="block px-4 py-2 text-sm font-semibold text-white hover:bg-white hover:text-black"
                       role="menuitem"
                       tabindex="-1"
@@ -332,6 +316,7 @@
               {% endif %} rounded-full block px-3 py-2 font-medium">
               Nuestros Productos
             </a>
+            {% if user.is_authenticated %}
             <a href="{% if currentPage == 'crudProductos' %}
                 
                 
@@ -392,6 +377,7 @@
               {% endif %} rounded-full block px-3 py-2 font-medium">
               Crud Artistas
             </a>
+            {% endif %}
             <a href="{% if currentPage == 'contacto' %}
                 
                 
@@ -427,7 +413,7 @@
       </nav>
     </header>
 
-    <main>
+    <main class="flex-grow pt-7">
       {% block content %}
 
       {% endblock %}
@@ -435,7 +421,7 @@
 
     <!-- MODAL CARRITO DE COMPRAS -->
     <section>
-      <div class="relative z-10 hidden fade-in-shoppingcart" aria-labelledby="slide-over-title" role="dialog" aria-modal="true" id="shopping-cart-panel">
+      <div class="relative z-50 hidden fade-in-shoppingcart" aria-labelledby="slide-over-title" role="dialog" aria-modal="true" id="shopping-cart-panel">
         <div class="fixed inset-0 bg-black-transparent" aria-hidden="true"></div>
 
         <div class="fixed inset-0 overflow-hidden">
@@ -492,7 +478,7 @@
 
     <!-- MODAL PREVIEW PRODUCT -->
     <section>
-      <div id="previewProductModal" class="hidden fade-in-preview relative z-10" role="dialog" aria-modal="true">
+      <div id="previewProductModal" class="hidden fade-in-preview relative z-50" role="dialog" aria-modal="true">
         <div class="fixed inset-0 hidden bg-black-transparent transition-opacity sm:block md:block"></div>
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div id="previewProductBackdrop" class="flex min-h-full items-stretch justify-center text-center sm:items-center sm:px-6 md:items-center md:px-2 lg:px-4">
@@ -537,7 +523,7 @@
 
     <!-- MODAL ALERTA -->
     <section>
-      <div id="alert-modal" class="relative z-10 fade-in-alert hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+      <div id="alert-modal" class="relative z-50 fade-in-alert hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-black-transparent" aria-hidden="true"></div>
         <div class="fixed inset-0 z-10 w-screen overflow-hidden">
           <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">

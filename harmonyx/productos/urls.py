@@ -9,6 +9,7 @@ urlpatterns = [
     path('iniciarSesion', views.iniciarSesion, name='iniciarSesion'),
     path('registrarCuenta', views.registrarCuenta, name='registrarCuenta'),
     path('checkout', views.checkout, name='checkout'),
+    path('top100billboard', views.top100billboard, name='top100billboard'),
     
     # Rutas para los productos
     path('crudProductos', views.crudProductos, name='crud'),
