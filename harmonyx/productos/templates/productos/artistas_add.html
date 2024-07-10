@@ -1,0 +1,57 @@
+{% extends 'productos/base.html' %}
+{% load static %}
+
+{% block title %}
+  Agregar Artista - HarmonyX
+{% endblock %}
+
+{% block content %}
+  <!-- SECTION AGREGAR ARTISTA -->
+  <section>
+    <div class="bg-black text-center text-white px-5 py-12">
+      <div>
+        <div class="mx-auto max-w-2xl text-center">
+          <div class="text-2xl font-semibold mb-4" id="idMensajes">
+            {% if mensaje %}
+              {% if 'Error' in mensaje %}
+                <p class="text-light-red">{{ mensaje }}</p>
+              {% else %}
+                <p class="text-light-green">{{ mensaje }}</p>
+              {% endif %}
+            {% endif %}
+          </div>
+
+          <h2 class="text-3xl font-bold tracking-tight">Agregar Artista</h2>
+        </div>
+        <form action="{% url 'artistasAdd' %}" method="POST" class="mx-auto max-w-2xl mt-8">
+          {% csrf_token %}
+          <div class="grid grid-cols-1 sm:grid-cols-1 gap-x-6 gap-y-6">
+            <!-- INPUT AUTOMATICO FORMULARIO -->
+            
+            <div>
+              <label for="sku" class="block text-sm font-semibold leading-6">NOMBRE ARTISTA</label>
+              <div class="mt-2">
+                {{ form.nombre_artista }}
+              </div>
+            </div>
+          </div>
+          <div class="mt-8">
+            <button type="submit" class="text-black bg-green hover:btn-anim-scale border-0 py-2 px-6 rounded-lg text-base font-semibold" name="opcion">Agregar Artista</button>
+          </div>
+        </form>
+
+        <div class="mt-5">
+          <a type="button" href="{% url 'crudArtistas' %}" class="text-black text-base font-semibold bg-red hover:btn-anim-scale-bg-red flex-shrink-0 inline-flex border-0 py-2 px-6 focus:outline-none rounded-lg">Cancelar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/preloadpage.js' %}"></script>
+  <script src="{% static 'js/navBar.js' %}"></script>
+  <script src="{% static 'js/previewProduct.js' %}"></script>
+  <script src="{% static 'js/modalAlert.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+{% endblock %}

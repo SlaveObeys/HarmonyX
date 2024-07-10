@@ -1,0 +1,68 @@
+{% extends 'productos/base.html' %}
+{% load static %}
+
+{% block title %}
+  Crud Artistas - HarmonyX
+{% endblock %}
+
+{% block content %}
+  <!-- SECTION LISTA DE PRODUTOS CRUD -->
+  <section>
+    <div class="bg-black text-center text-white px-5 py-12">
+      <div class="text-2xl font-semibold mb-4" id="idMensajes">
+        {% if mensaje %}
+          {% if 'Error' in mensaje %}
+            <p class="text-light-red">{{ mensaje }}</p>
+          {% else %}
+            <p class="text-light-green">{{ mensaje }}</p>
+          {% endif %}
+        {% endif %}
+      </div>
+
+      <div>
+        <h2 class="font-bold text-3xl tracking-tight mb-4">Lista de Artistas</h2>
+        <a type="button" href="{% url 'artistasAdd' %}" class="text-black text-base font-semibold bg-green hover:btn-anim-scale flex-shrink-0 inline-flex border-0 py-2 px-6 focus:outline-none rounded-full">Agregar Artista</a>
+      </div>
+
+      <div class="mt-8 overflow-x-auto">
+        <table class="table-auto text-center w-full">
+          {% if artistas %}
+            <thead>
+              <tr class="text-sm text-light-black font-medium uppercase bg-light-light-black">
+                <th class="px-4 py-4">Id</th>
+                <th class="px-8 py-4 whitespace-nowrap">Nombre Artista</th>
+                <th class="px-2 py-4">Eliminar</th>
+                <th class="px-2 py-4">Modificar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for artista in artistas %}
+                <tr class="bg-light-black">
+                  <td class="text-sm font-medium border-b px-4 py-2">{{ artista.id_artista }}</td>
+
+                  <td class="text-sm font-medium border-b px-4 py-2">{{ artista.nombre_artista }}</td>
+
+                  <td class="border-b px-4 py-2">
+                    <a type="button" href="{% url 'artistasDel' pk=artista.id_artista %}" class="bg-light-light-black hover:btn-anim-scale-bg-red flex-shrink-0 inline-flex rounded-full"><img class="w-10 h-10" src="{% static 'img/imgicontrash.png' %}" alt="{{ artista.id_artista }}imgicontrash" /></a>
+                  </td>
+
+                  <td class="border-b px-4 py-2">
+                    <a type="button" href="{% url 'artistasEdit' pk=artista.id_artista %}" class="bg-light-light-black hover:btn-anim-scale flex-shrink-0 inline-flex rounded-full"><img class="w-10 h-10" src="{% static 'img/imgiconpencil.png' %}" alt="{{ artista.id_artista }}imgiconpencil" /></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          {% endif %}
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/preloadpage.js' %}"></script>
+  <script src="{% static 'js/navBar.js' %}"></script>
+  <script src="{% static 'js/previewProduct.js' %}"></script>
+  <script src="{% static 'js/modalAlert.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+{% endblock %}

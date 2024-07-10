@@ -1,0 +1,47 @@
+{% extends 'productos/base.html' %}
+{% load static %}
+
+{% block title %}
+  Nuestros Productos - HarmonyX
+{% endblock %}
+
+{% block content %}
+  <!-- <button id="openModalButton" class="mt-5 ml-5 px-4 py-2 bg-blue-600 text-white rounded-md">Open Modal</button> -->
+
+  <!-- SECTION NUESTROS PRODUCTOS --> <!-- lg:h-80 mt-4 -->
+  <section>
+    <div class="bg-black">
+      <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight text-white text-center">✨ Todos nuestros productos ✨</h2>
+        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {% for producto in productos %}
+            <div class="group relative openPreviewProduct" data-nombre="{{ producto.id_artista }}" data-album="{{ producto.nombre_album }}" data-precio="${{ producto.precio }}" data-imagen="{% static 'img/' %}{{ producto.nombre_img }}.png">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-light-black lg:aspect-none group-hover:opacity-75" style="--tw-bg-opacity: 0.5 !important">
+                <img src="{% static 'img/' %}{{ producto.nombre_img }}.png" alt="{{ producto.nombre_img }}" class="h-full w-full object-contain object-center lg:h-full lg:w-full" />
+              </div>
+              <div class="mt-6 flex justify-between">
+                <div>
+                  <h3 class="text-sm text-white">
+                    <p class="mt-1 font-medium text-sm text-white">{{ producto.nombre_album }}</p>
+                    <a href="#" class="text-light-black text-sm font-medium" onclick="return false;">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      {{ producto.id_artista }}
+                    </a>
+                  </h3>
+                </div>
+                <p class="text-sm text-white mt-1 font-semibold">${{ producto.precio }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/preloadpage.js' %}"></script>
+  <script src="{% static 'js/navBar.js' %}"></script>
+  <script src="{% static 'js/previewProduct.js' %}"></script>
+  <script src="{% static 'js/modalAlert.js' %}"></script>
+{% endblock %}

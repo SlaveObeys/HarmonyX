@@ -1,0 +1,57 @@
+{% extends 'productos/base.html' %}
+{% load static %}
+
+{% block title %}
+  Iniciar Sesión - HarmonyX
+{% endblock %}
+
+{% block content %}
+  <!-- SECTION INICIAR SESION -->
+  <section class="bg-black">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">Inicia sesión en tu cuenta</h2>
+      </div>
+
+      <div class="mt-10 mb-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form class="space-y-6" action="#" method="POST">
+          {% csrf_token %}
+          <div>
+            <label for="email" class="block text-sm font-semibold leading-6 text-white">Correo electrónico</label>
+            <div class="mt-2">
+              <input id="email" name="email" type="email" autocomplete="email" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Correo electrónico" />
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between">
+              <label for="password" class="block text-sm font-semibold leading-6 text-white">Contraseña</label>
+              <div class="text-sm">
+                <a href="#" class="font-semibold text-green">¿Olvidaste tu contraseña?</a>
+              </div>
+            </div>
+            <div class="mt-2">
+              <input id="password" name="password" type="password" autocomplete="current-password" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Contraseña" />
+            </div>
+          </div>
+
+          <div>
+            <button type="#" class="text-base text-white font-semibold bg-green hover:btn-anim-scale flex w-full justify-center rounded-full px-3 py-2 leading-6 shadow-sm">Iniciar Sesión</button>
+          </div>
+        </form>
+
+        <p class="mt-10 text-center text-sm font-medium text-light-black">
+          ¿No tienes cuenta?
+          <a href="{% url 'registrarCuenta' %}" class="font-semibold leading-6 text-green">¡Crea tu cuenta!</a>
+        </p>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/preloadpage.js' %}"></script>
+<script src="{% static 'js/navBar.js' %}"></script>
+<script src="{% static 'js/previewProduct.js' %}"></script>
+<script src="{% static 'js/modalAlert.js' %}"></script>
+{% endblock %}

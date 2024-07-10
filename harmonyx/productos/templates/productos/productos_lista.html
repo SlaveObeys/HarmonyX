@@ -1,0 +1,96 @@
+{% extends 'productos/base.html' %}
+{% load static %}
+
+{% block title %}
+  Crud Productos - HarmonyX
+{% endblock %}
+
+{% block content %}
+  <!-- SECTION LISTA DE PRODUTOS CRUD -->
+  <section>
+    <div class="bg-black text-center text-white px-5 py-12">
+      <div class="text-2xl font-semibold mb-4" id="idMensajes">
+        {% if mensaje %}
+          {% if 'Error' in mensaje %}
+            <p class="text-light-red">{{ mensaje }}</p>
+          {% else %}
+            <p class="text-light-green">{{ mensaje }}</p>
+          {% endif %}
+        {% endif %}
+      </div>
+
+      <div>
+        <h2 class="font-bold text-3xl tracking-tight mb-4">Lista de Productos</h2>
+        <a type="button" href="{% url 'productosAdd' %}" class="text-black text-base font-semibold bg-green hover:btn-anim-scale flex-shrink-0 inline-flex border-0 py-2 px-6 focus:outline-none rounded-full">Agregar Producto</a>
+      </div>
+
+      <div class="mt-8 overflow-x-auto">
+        <table class="table-auto text-center w-full">
+          {% if productos %}
+            <thead>
+              <tr class="text-sm text-light-black font-medium uppercase bg-light-light-black">
+                <th class="px-4 py-4">Sku</th>
+                <th class="px-8 py-4 whitespace-nowrap">Artista | Nombre Álbum</th>
+                <th class="px-4 py-4">Precio</th>
+                <th class="px-4 py-4">Fecha lanzamiento</th>
+                <th class="px-4 py-4">Tendencia</th>
+                <th class="px-4 py-4">Nombre Imagen</th>
+                <th class="px-2 py-4">Eliminar</th>
+                <th class="px-2 py-4">Modificar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for producto in productos %}
+                <tr class="bg-light-black">
+                  <td class="text-sm font-medium border-b px-4 py-4">{{ producto.sku }}</td>
+
+                  <td class="border-b px-4 py-4">
+                    <div class="flex items-center">
+                      <img class="bg-light-light-black rounded-full w-12 h-12" src="{% static 'img/' %}{{ producto.nombre_img }}.png" alt="{{ producto.nombre_img }}" />
+                      <div class="ml-3 text-start">
+                        <p class="text-sm font-semibold">{{ producto.id_artista }}</p>
+                        <p class="text-sm font-medium text-light-black">{{ producto.nombre_album }}</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="text-sm font-medium border-b px-4 py-4">{{ producto.precio }}</td>
+
+                  <td class="text-sm font-medium border-b px-4 py-4">{{ producto.fecha_lanzamiento }}</td>
+
+                  {% if producto.tendencia %}
+                    <td class="border-b px-4 py-4">
+                      <span class="text-xs text-black inline-flex items-center rounded-full bg-green px-2 py-1 font-medium">Activado</span>
+                    </td>
+                  {% else %}
+                    <td class="border-b px-4 py-4">
+                      <span class="inline-flex items-center rounded-full bg-red px-2 py-1 text-xs font-medium text-black">Desactivado</span>
+                    </td>
+                  {% endif %}
+
+                  <td class="text-sm font-medium border-b px-4 py-4">{{ producto.nombre_img }}</td>
+
+                  <td class="border-b px-4 py-4">
+                    <a type="button" href="{% url 'productosDel' pk=producto.sku %}" class="bg-light-light-black hover:btn-anim-scale-bg-red flex-shrink-0 inline-flex rounded-full"><img class="w-10 h-10" src="{% static 'img/imgicontrash.png' %}" alt="{{ producto.nombre_img }}imgicontrash" /></a>
+                  </td>
+
+                  <td class="border-b px-4 py-4">
+                    <a type="button" href="{% url 'productosFindEdit' pk=producto.sku %}" class="bg-light-light-black hover:btn-anim-scale flex-shrink-0 inline-flex rounded-full"><img class="w-10 h-10" src="{% static 'img/imgiconpencil.png' %}" alt="{{ producto.nombre_img }}imgiconpencil" /></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          {% endif %}
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/preloadpage.js' %}"></script>
+  <script src="{% static 'js/navBar.js' %}"></script>
+  <script src="{% static 'js/previewProduct.js' %}"></script>
+  <script src="{% static 'js/modalAlert.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+{% endblock %}

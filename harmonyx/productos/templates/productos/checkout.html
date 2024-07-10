@@ -1,0 +1,171 @@
+{% extends 'productos/base.html' %}
+{% load static %}
+
+{% block title %}
+  Carrito - HarmonyX
+{% endblock %}
+
+{% block content %}
+  <!-- SECTION CONTACTANOS -->
+  <section>
+    <div class="bg-black relative">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight text-white md:text-left-checkout text-center">Confirmación de pago</h2>
+        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2-checkout xl:gap-x-8">
+          <div aria-describedby="columninfouserdata" class="bg-light-black rounded-lg p-4 text-white">
+            <form action="#" method="POST" class="space-y-6">
+              {% csrf_token %}
+              <div>
+                <label for="nombrecompleto" class="block text-sm font-semibold leading-6 text-white">Nombre completo</label>
+                <div class="mt-2">
+                  <input id="nombrecompleto" name="nombrecompleto" maxlength="150" type="text" autocomplete="off" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Nombre completo" />
+                </div>
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-semibold leading-6 text-white">Correo electrónico</label>
+                <div class="mt-2">
+                  <input id="email" name="email" type="email" maxlength="100" autocomplete="email" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Correo electrónico" />
+                </div>
+              </div>
+
+              <div>
+                <label for="numbercard" class="block text-sm font-semibold leading-6 text-white">Número tarjeta credito/debito</label>
+                <div class="mt-2">
+                  <input id="numbercard" name="numbercard" type="text" maxlength="19" autocomplete="off" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="1234 5678 9012 3456" />
+                </div>
+              </div>
+
+              <div class="flex justify-between">
+                <div class="w-full mr-5">
+                  <label for="fechaexpiracion" class="block text-sm font-semibold leading-6 text-white">Fecha expiración</label>
+                  <div class="mt-2">
+                    <input id="fechaexpiracion" name="fechaexpiracion" type="text" maxlength="5" autocomplete="off" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="01/24" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="cvctarjeta" class="block text-sm font-semibold leading-6 text-white">CVC</label>
+                  <div class="mt-2">
+                    <input id="cvctarjeta" name="cvctarjeta" type="text" maxlength="3" autocomplete="off" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="123" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="direccion" class="block text-sm font-semibold leading-6 text-white">Domicilio</label>
+                <div class="mt-2">
+                  <input id="direccion" name="direccion" type="text" maxlength="100" autocomplete="off" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Nombre domicilio" />
+                </div>
+              </div>
+
+              <div class="flex justify-between">
+                <div class="w-full mr-4">
+                  <label for="ciudad" class="block text-sm font-semibold leading-6 text-white">Ciudad</label>
+                  <div class="mt-2">
+                    <input id="ciudad" name="ciudad" type="text" maxlength="50" autocomplete="off" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Ciudad" />
+                  </div>
+                </div>
+
+                <div class="w-full mr-4">
+                  <label for="estadoprovincia" class="block text-sm font-semibold leading-6 text-white">Provincia</label>
+                  <div class="mt-2">
+                    <input id="estadoprovincia" name="estadoprovincia" type="text" maxlength="50" autocomplete="off" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Provincia" />
+                  </div>
+                </div>
+
+                <div class="w-full">
+                  <label for="codepostal" class="block text-sm font-semibold leading-6 text-white whitespace-nowrap">Código postal</label>
+                  <div class="mt-2">
+                    <input id="codepostal" name="codepostal" type="text" maxlength="50" autocomplete="off" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Código postal" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mt-10">
+                  <button type="#" class="text-base text-black font-semibold bg-green hover:btn-anim-scale flex w-full justify-center rounded-lg px-3 py-2 leading-6 shadow-sm">Pagar $22.650</button>
+                </div>
+              </div>
+              <div></div>
+            </form>
+          </div>
+
+          <div aria-label="columninfopayment" class="space-y-6 bg-light-black rounded-lg p-4 text-white">
+            <div></div>
+            <form action="#" method="POST" class="flex justify-between">
+              {% csrf_token %}
+              <div class="flex-grow mr-5">
+                <label for="codigodescuento" class="block text-sm font-semibold leading-6 text-white">Código descuento</label>
+                <div class="mt-2">
+                  <input id="codigodescuento" name="codigodescuento" type="text" maxlength="50" autocomplete="off" required class="w-full text-black bg-white rounded-lg border focus:ring-1 focus:ring-white focus:border-white focus:bg-transparent focus:ring-text-white text-base font-medium outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="HARMONYX-EAONYAZNIPBI" />
+                </div>
+              </div>
+
+              <div class="flex-grow mt-2 content-end">
+                <button type="#" class="text-base text-white font-semibold bg-green hover:btn-anim-scale flex w-full justify-center rounded-lg px-3 py-2 leading-6 shadow-sm">Aplicar</button>
+              </div>
+            </form>
+
+            <div aria-describedby="subtotal">
+              <div class="flex justify-between mt-8">
+                <p class="text-light-black text-sm font-medium">Subtotal</p>
+                <p class="text-base font-medium">$16.990</p>
+              </div>
+            </div>
+
+            <div aria-describedby="descuentos">
+              <div class="flex justify-between">
+                <p class="text-light-black text-sm font-medium">Descuento</p>
+                <p class="text-base font-medium">-$2.990</p>
+              </div>
+            </div>
+
+            <div aria-describedby="impuestos">
+              <div class="flex justify-between">
+                <p class="text-light-black text-sm font-medium">IVA</p>
+                <p class="text-base font-medium">$2.660</p>
+              </div>
+            </div>
+
+            <div aria-describedby="envio">
+              <div class="flex justify-between">
+                <p class="text-light-black text-sm font-medium">Envío</p>
+                <p class="text-base font-medium">$5.990</p>
+              </div>
+            </div>
+
+            <hr />
+
+            <div aria-describedby="total">
+              <div class="flex justify-between">
+                <p class="text-light-black text-lg font-semibold">Total</p>
+                <p class="text-lg font-semibold">$22.650 CLP</p>
+              </div>
+            </div>
+
+            <div aria-describedby="logoempresa">
+              <div class="flex justify-center">
+                <label for="codigodescuento" class="block mt-10 font-semibold leading-6 text-white">Métodos de pago</label>
+              </div>
+              <div class="flex justify-center h-logofooter">
+                <img src="{% static 'img/imgpaymentmethod.png' %}" alt="imgcheckout_payments" />
+              </div>
+              <br /><br><br>
+              <div class="flex justify-center">
+                <img class="h-logonavbar" src="{% static 'img/logo_navbar.png' %}" alt="imgcheckout_logo" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/preloadpage.js' %}"></script>
+  <script src="{% static 'js/navBar.js' %}"></script>
+  <script src="{% static 'js/previewProduct.js' %}"></script>
+  <script src="{% static 'js/modalAlert.js' %}"></script>
+{% endblock %}
